@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    nacos:
+      #nacos密码
+      password: nacos
+      #nacos用户名
+      name: nacos
+      config:
+        #nacos配置中心
+        server-addr: 10.51.225.9:28848
+

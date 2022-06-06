@@ -1,0 +1,13 @@
+[ {
+  "name" : "BaseRequest",
+  "valid" : true,
+  "incomplete" : false,
+  "importName" : "com.bob.bole.halo.framework.rpc.api.model.BaseRequest",
+  "inParam" : true
+}, {
+  "name" : "BaseResponse",
+  "valid" : true,
+  "incomplete" : false,
+  "importName" : "com.bob.bole.halo.framework.rpc.api.model.BaseResponse",
+  "inParam" : false
+} ]
