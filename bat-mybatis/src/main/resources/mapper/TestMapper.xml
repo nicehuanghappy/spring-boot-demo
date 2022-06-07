@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bob.bat.mybatis.dao.TestDao">
+
+    <resultMap id="BaseResultMap" type="com.bob.bat.mybatis.entity.TestEntity">
+            <id property="id" column="id" jdbcType="VARCHAR"/>
+            <result property="clientName" column="client_name" jdbcType="VARCHAR"/>
+            <result property="creatTime" column="creat_time" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,client_name,creat_time
+    </sql>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List" />
+        from test
+        where  id = #{id,jdbcType=VARCHAR} 
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        delete from test
+        where  id = #{id,jdbcType=VARCHAR} 
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.bob.bat.mybatis.entity.TestEntity" useGeneratedKeys="true">
+        insert into test
+        ( id,client_name,creat_time
+        )
+        values (#{id,jdbcType=VARCHAR},#{clientName,jdbcType=VARCHAR},#{creatTime,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.bob.bat.mybatis.entity.TestEntity" useGeneratedKeys="true">
+        insert into test
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+                <if test="id != null">id,</if>
+                <if test="clientName != null">client_name,</if>
+                <if test="creatTime != null">creat_time,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+                <if test="id != null">#{id,jdbcType=VARCHAR},</if>
+                <if test="clientName != null">#{clientName,jdbcType=VARCHAR},</if>
+                <if test="creatTime != null">#{creatTime,jdbcType=VARCHAR},</if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.bob.bat.mybatis.entity.TestEntity">
+        update test
+        <set>
+                <if test="clientName != null">
+                    client_name = #{clientName,jdbcType=VARCHAR},
+                </if>
+                <if test="creatTime != null">
+                    creat_time = #{creatTime,jdbcType=VARCHAR},
+                </if>
+        </set>
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.bob.bat.mybatis.entity.TestEntity">
+        update test
+        set 
+            client_name =  #{clientName,jdbcType=VARCHAR},
+            creat_time =  #{creatTime,jdbcType=VARCHAR}
+        where   id = #{id,jdbcType=VARCHAR} 
+    </update>
+</mapper>

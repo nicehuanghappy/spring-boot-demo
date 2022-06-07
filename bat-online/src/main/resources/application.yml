@@ -1,0 +1,19 @@
+server:
+  port: 8888
+spring:
+  datasource:
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      url: jdbc:mysql://localhost:3306/hwydemo
+      username: root
+      password: root
+      driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:mapper/*xml
+logging:
+  level:
+    org.springframework.boot.autoconfigure: error
