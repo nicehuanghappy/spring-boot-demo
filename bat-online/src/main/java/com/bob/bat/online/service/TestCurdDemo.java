@@ -19,7 +19,7 @@ import javax.annotation.Resource;
 @Slf4j
 @Service
 public class TestCurdDemo {
-    @Resource
+//    @Resource
     private TestDao testDao;
     public int insert(TestDemoInputDto testDemoInputDto) {
         TestEntity testEntity = testDao.selectByPrimaryKey(Long.valueOf(testDemoInputDto.getId()));
